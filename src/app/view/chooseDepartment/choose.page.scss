@@ -1,0 +1,138 @@
+.choose-li {
+  font-size: 16px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #000000;
+  margin: 2px;
+  float: left;
+  width: 100%;
+}
+
+.select-span {
+  border: 0.1rem solid #E4E8EC;
+  padding: 2px;
+}
+
+.choose-ul {
+  // margin-top: 5px;
+  padding-left: 25px;
+  margin: 5px;
+  float: left;
+  width: 100%;
+}
+
+.choose-grid {
+  background: #ffffff;
+}
+
+.select-color {
+  color: #188CFF;
+}
+
+.ml-title-bg {
+  height: 42px;
+  /* 42/10 */
+  ;
+  // margin-top: 2.1rem;
+  background: #ffffff;
+  // position: relative;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.ml-title {
+  height: 20px;
+  font-size: 18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #000000;
+  line-height: 20px;
+  position: absolute; // 绝对定位
+  top: 12.96px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.ml-back {
+  height: 14px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  margin-left: 15px;
+  float: left;
+  width: 100px;
+
+  .ml-back-img {
+    width: 18px;
+    height: 100%;
+    float: left;
+  }
+
+  .ml-back-lab {
+    font-size: 13px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #1890ff;
+    line-height: 15px;
+    float: left;
+    margin-left: 6px;
+  }
+}
+
+.choose-title-right {
+  background-color: #188CFF;
+  color: #ffffff;
+  height: 30px;
+  float: right;
+  width: 30%;
+
+}
+
+.choose-title-left {
+  background-color: #188CFF;
+  color: #ffffff;
+  height: 30px;
+  float: left;
+  width: 70%;
+}
+
+.choose-title {
+  text-align: center;
+  font-size: 18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  padding-top: 4px;
+}
+
+.choose-person {
+  float: right;
+  padding-left: 10px;
+  padding-top: 10px;
+  width: 30%;
+  background-color: #ffffff;
+  padding-bottom: 10px;
+  // height: 100%;
+}
+
+.choose-depart {
+  float: left;
+  padding-top: 10px;
+  padding-left: 20px;
+  width: 67%;
+  background-color: #ffffff;
+  padding-bottom: 10px;
+  border-right: solid 1px #ddd;
+  // height: 100%;
+}
+.ion-icon {
+  width: 1.95rem;
+  height: 1.95rem;
+  position: relative;
+  float: left;
+  top: -0.1875rem;
+  margin-right: 10px;
+  // padding: 0 0.8rem;
+}

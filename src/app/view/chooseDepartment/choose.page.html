@@ -1,0 +1,40 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-08-02 09:25:10
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-19 14:04:11
+-->
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">选择人员</div>
+</div>
+<div class="ml-interval"></div>
+<div class="choose-title-right">
+  <div class="choose-title">人员信息</div>
+</div>
+<div class="choose-title-left">
+  <div class="choose-title">部门信息</div>
+</div>
+<div class="choose-person">
+  <div class="choose-li" style="margin-top: 10px;" *ngFor="let p of peopleList">
+    <span class="select-span" (click)="goBackFunc(p)">{{p.text}}</span>
+  </div>
+</div>
+<div class="choose-depart" >
+  <ng-template #reviewList let-list>
+    <div class="choose-li" *ngFor="let item of list">
+      <img *ngIf="!item.show" (click)="item.show = true" class="icon ion-icon" src="assets/scyf/add.svg">
+      <img *ngIf="item.show" (click)="item.show = false" class="icon ion-icon" src="assets/scyf/reduce.svg">
+      <span (click)="onQueryPeople(item)" class="select-span"
+        [ngClass]="{'select-color': (deptId ===item.label)}">{{item.text}}</span>
+      <div class="choose-ul" *ngIf="item.show && item.subDept.length>0">
+        <ng-container *ngTemplateOutlet="reviewList; context: {$implicit: item.subDept}">
+        </ng-container>
+      </div>
+    </div>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="reviewList; context: {$implicit:clauseData}">
+  </ng-container>
+</div>

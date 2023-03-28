@@ -1,0 +1,26 @@
+import { Injectable } from "@angular/core";
+import { Observable, Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoadingService {
+
+  private loadingSubject = new Subject<boolean>();
+
+  constructor() { }
+
+  getLoding(): Observable<boolean> {
+    return this.loadingSubject.asObservable();
+  }
+
+  loading(showLoading: boolean): void {
+    this.loadingSubject.next(showLoading);
+    if (showLoading) {
+      const closeDown = setInterval(() => {
+        this.loadingSubject.next(false);
+        clearInterval(closeDown);
+      }, 10000);
+    }
+  }
+}

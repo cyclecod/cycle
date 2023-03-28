@@ -1,0 +1,89 @@
+.ml-title-bg {
+  height: 42px;
+  /* 42/10 */
+  ;
+  // margin-top: 2.1rem;
+  background: #ffffff;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.ml-back {
+  height: 14px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  margin-left: 15px;
+  float: left;
+  width: 100px;
+
+  .ml-back-img {
+    width: 18px;
+    height: 100%;
+    float: left;
+  }
+
+  .ml-back-lab {
+    font-size: 13px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #1890ff;
+    line-height: 15px;
+    float: left;
+    margin-left: 6px;
+  }
+}
+
+.ml-title {
+  height: 20px;
+  font-size:18px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #000000;
+  line-height: 20px;
+  position: absolute; // 绝对定位
+  top: 12.96px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.device-scan {
+  margin-right: 15px;
+  margin-top: 5px;
+  float: right;
+}
+
+
+.item-position {
+  position: absolute;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.tabs-device-button {
+  padding-right: 20px;
+  text-align: right;
+  color: #1890ff;
+}
+
+.no-data {
+  position: absolute;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  top: 55px;
+}
+
+.ml-interval {
+  background: #F5F5F5;
+  height: 12px;
+  width: 100%;
+}
+::ng-deep.am-list-item .am-list-line .am-list-extra {
+  flex-basis: 40%;
+}

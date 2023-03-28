@@ -1,0 +1,23 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-08-02 09:25:10
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-22 13:36:14
+-->
+<div class="scaner" id="scaner">
+  <!-- <div class="banner" *ngIf="showBanner">
+    <i class="close_icon" (click)="showBanner = false"></i>
+     <p class="text">若当前浏览器无法扫码，请切换其他浏览器尝试</p>
+  </div> -->
+  <div class="cover">
+    <p class="line"></p>
+    <span class="square top left"></span>
+    <span class="square top right"></span>
+    <span class="square bottom right"></span>
+    <span class="square bottom left"></span>
+    <p class="tips">将二维码放入框内，即可自动扫描</p>
+  </div>
+  <video [class.display]="!showPlay" class="source" id="video"></video>
+  <canvas [class.display]="showPlay" class="scaner-canvas"  id="scan-canvas"></canvas>
+  <!-- <button [class.display]="!showPlay" (click)="run()">开始</button> -->
+</div>

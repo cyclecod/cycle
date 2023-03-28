@@ -1,0 +1,24 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-08-02 09:25:10
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-11-01 13:00:23
+-->
+<ng-container *ngIf="isEdit; else elseBlock">
+  <div Button style="width: 180px;
+  margin-left: 8px; background-color: #108ee9;
+    color: #fff;" (onClick)="getUserMedia(message)">拍照</div>
+  <ImagePicker [files]="fileList" [multiple]="true" [accept]="'image/gif,image/jpeg,image/jpg,image/png'"
+    (onChange)="fileChange($event)" (onImageClick)="imageClick($event)">
+  </ImagePicker>
+</ng-container>
+<ng-template #elseBlock>
+  <ImagePicker [files]="fileList" [selectable]="false" [disableDelete]="true"></ImagePicker>
+</ng-template>
+
+<ng-template #message>
+  <video id="video" width="560" height="540" autoplay="">视频流不可用.</video>
+  <!-- <img style="width: 360px;" *ngIf="avatarUrl" [src]="avatarUrl" class="avatar" /> -->
+  <canvas id="canvas" [style.display]="'none'">
+  </canvas>
+</ng-template>

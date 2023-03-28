@@ -1,0 +1,71 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-29 15:58:45
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-10-24 11:36:34
+-->
+<ng-container *ngIf="isChoose === 'danger-add'">
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">隐患填报</div>
+</div>
+<div class="ml-interval"></div>
+<List class="item-position">
+  <InputItem placeholder="请输入隐患名称" [(ngModel)]="objectData.dangerName" [content]="'隐患名称'">
+  </InputItem>
+
+  <InputItem placeholder="请选择隐患类型" [editable]="false" 
+  (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')"
+   [value]="selectData.hazardDangerType" [content]="'隐患类型'">
+  </InputItem>
+
+  <InputItem placeholder="请选择隐患等级" [editable]="false"
+  (click)="showPicker('shyf.dangerLevel', 'dangerLevel')"
+  [value]="selectData.dangerLevel" [content]="'隐患等级'">
+  </InputItem>
+
+  <InputItem placeholder="请选择隐患来源" [editable]="false"
+  (click)="showPicker('shyf.dangerSrc', 'dangerSrc')"
+  [value]="selectData.dangerSrc" [content]="'隐患来源'">
+  </InputItem>
+
+  <TextareaItem placeholder="请输隐患描述" [(ngModel)]="objectData.dangerDesc" [clear]="true" [title]="'隐患描述'"
+    [autoHeight]="true" [labelNumber]="2">
+  </TextareaItem>
+
+  <InputItem placeholder="请选择治理类型" [editable]="false"
+  (click)="showPicker('shyf.dangerManageType', 'dangerManageType')"
+  [value]="selectData.dangerManageType" [content]="'治理类型'">
+  </InputItem>
+
+  <TextareaItem placeholder="请输形成原因" [(ngModel)]="objectData.dangerReason" [clear]="true" [title]="'形成原因'"
+    [autoHeight]="true" [labelNumber]="2">
+  </TextareaItem>
+
+  <TextareaItem placeholder="请输管控措施" [(ngModel)]="objectData.controlMeasures" [clear]="true" [title]="'管控措施'"
+    [autoHeight]="true" [labelNumber]="2">
+  </TextareaItem>
+
+  <ListItem DatePicker [extra]="getTime(dangerManageDeadline)" [arrow]="'horizontal'" [mode]="'date'"
+    [(ngModel)]='dangerManageDeadline' placeholder="请选择计划完成时间">
+    计划完成时间
+  </ListItem>
+  <InputItem  [editable]="false" [value]="objectData.deviceName" [content]="'装置名称'">
+  </InputItem>
+  <InputItem [editable]="false" [value]="objectData.unitName" [content]="'单元名称'">
+  </InputItem>
+  <!-- <InputItem placeholder="请选择整改人" (click)="returnBack('choose-depart')" required [editable]="false" [value]="objectData.liablePersonId" [content]="'整改人'">
+  </InputItem> -->
+  <ml-gray-bar [data]="'隐患图片'"></ml-gray-bar>
+  <ph-image #phImage [isEdit]="true" [(fileList)]="fileList"></ph-image>
+  <ml-gray-bar></ml-gray-bar>
+</List>
+<div Button [type]="'primary'" class="button danger-add-button" debounceClick [debounceTime]="300"
+  (debounceClick)="onSave()">提交
+</div>
+</ng-container>
+<!-- <ng-container *ngIf="isChoose === 'choose-depart'">
+  <ph-choose-department [(isUse)]="isChoose" (chooseData)="chooseData($event)"></ph-choose-department>
+</ng-container> -->

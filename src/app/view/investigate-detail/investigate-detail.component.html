@@ -1,0 +1,33 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-29 15:58:45
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-24 10:38:52
+-->
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">任务详情</div>
+</div>
+<div class="ml-interval"></div>
+<List class="item-position">
+  <ListItem [extra]="objectData.deviceName">装置名称</ListItem>
+  <ListItem [extra]="objectData.hazardCode">装置编号</ListItem>
+  <ListItem [extra]="objectData.eventName">事件名称</ListItem>
+  <ListItem [extra]="objectData.riskMeasureName">措施名称</ListItem>
+  <ListItem [extra]="objectData.unitName">单元名称</ListItem>
+  <ListItem [extra]="objectData.checkCycleName">巡检周期</ListItem>
+  <ListItem [extra]="objectData.leftTime">排查剩余时间</ListItem>
+  <ListItem [extra]="objectData.troubleshootContent" [wrap]="true">排查内容</ListItem>
+  <!-- <ListItem multipleLine>
+    排查内容
+    <Brief>{{objectData.troubleshootContent}}</Brief>
+  </ListItem> -->
+  <ListItem [extra]="extraStatus">任务状态</ListItem>
+  <ng-template #extraStatus>
+    <Badge *ngIf="objectData.taskState === '1'" class="autopay" [text]="'待排查'" [setStyle]="autopayStyle"></Badge>
+    <Badge *ngIf="objectData.taskState === '2'" class="autopay" [text]="'已排查'" [setStyle]="autopayStyle1"></Badge>
+    <Badge *ngIf="objectData.taskState === '3'" class="autopay" [text]="'超期未排查'" [setStyle]="autopayStyle2"></Badge>
+  </ng-template>
+</List>

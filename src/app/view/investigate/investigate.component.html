@@ -1,0 +1,42 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-29 15:58:45
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-19 15:07:25
+-->
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">岗位排查</div>
+</div>
+<div class="ml-interval"></div>
+<ng-container *ngFor="let object of objectData">
+  <div class="home-card">
+    <div class="home-card-title">
+      <span class="card-title"></span>
+      <span>我的任务</span>
+      <span class="card-heard-taskState">{{getCodeValue(object.taskState, 'shyf.taskState')}}</span>
+    </div>
+    <div class="home-card-content">
+      <div class="card-content-left">单元名称：</div>
+      <div class="card-content-right">{{object.unitName}}</div>
+    </div>
+    <div class="home-card-content">
+      <div class="card-content-left">排查周期：</div>
+      <div class="card-content-right">{{object.checkCycle}}{{object.checkCycleUnit}}
+        <span class="investigate-color">任务剩余时间：{{object.leftTime}}</span></div>
+    </div>
+    <div class="home-card-content">
+      <div class="card-content-left">任务内容：</div>
+      <div class="card-content-right">{{object.troubleshootContent}}</div>
+
+    </div>
+    <div class="home-card-content">
+      <div class="normal-button" debounceClick [debounceTime]="300" (debounceClick)="onNormal(object)">
+        正常</div>
+      <div class="abnormal-button" debounceClick [debounceTime]="300" (debounceClick)="onAbnormal(object)">异常</div>
+    </div>
+  </div>
+  <div class="ml-interval"></div>
+</ng-container>

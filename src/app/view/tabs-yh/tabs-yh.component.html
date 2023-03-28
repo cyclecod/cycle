@@ -1,0 +1,93 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-28 14:15:07
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-10-22 09:05:21
+-->
+<div class="ml-title-bg">
+  <div class="ml-title">隐患治理</div>
+  <!-- <div class="ml-title-button"></div> -->
+</div>
+<Tabs [page]="2" [useOnPan]="true" [swipeable]="true" [activeTab]="pageIndex" [tabBarActiveTextColor]="'#1890ff'"
+  (onTabClick)="onTabClick($event)">
+  <TabPane [title]="'我的处理'">
+    <List class="item-position"  *ngIf="listObject.length > 0;">
+      <PullToRefresh (onRefresh)="pullToRefresh($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"
+        [(ngModel)]="state.refreshState" [endReachedRefresh]="state.endReachedRefresh">
+        <ng-container *ngFor="let item of listObject">
+          <div class="ml-interval"></div>
+          <div (click)="checkYH(item)">
+            <ListItem [extra]="extraStatus">{{item.dangerName}}</ListItem>
+            <ng-template #extraStatus>
+              <Badge *ngIf="item.dangerState === '-1'" class="autopay" [text]="'审核中'" [setStyle]="autopayStyle"></Badge>
+              <Badge *ngIf="item.dangerState === '0'" class="autopay" [text]="'整改中'" [setStyle]="autopayStyle1"></Badge>
+              <Badge *ngIf="item.dangerState === '1'" class="autopay" [text]="'待验收'" [setStyle]="autopayStyle2"></Badge>
+              <Badge *ngIf="item.dangerState === '9'" class="autopay" [text]="'已验收'" [setStyle]="autopayStyle"></Badge>
+              <Badge *ngIf="item.dangerState === '6'" class="autopay" [text]="'已关闭'" [setStyle]="autopayStyle1"></Badge>
+            </ng-template>
+            <ListItem>{{item.dangerDesc}}</ListItem>
+            <ListItem [extra]="item.dangerName">{{item.hazardDangerTypeName}}</ListItem>
+          </div>
+        </ng-container>
+      </PullToRefresh>
+      <div *ngIf="listObject.length < total; else elseBlock " class="tabs-device-button">
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+        <a (click)="onClick()">点击继续加载数据</a>
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+      </div>
+      <ng-template #elseBlock>
+        <div class="tabs-device-button">
+          <WhiteSpace [size]="'xl'"></WhiteSpace>
+          已经没有更多的数据加载
+          <WhiteSpace [size]="'xl'"></WhiteSpace>
+        </div>
+      </ng-template>
+    </List>
+    <ng-container *ngIf="listObject.length < 1">
+      <div class="no-data">
+        <img src="assets/scyf/no-data.svg">
+        <p>暂无数据</p>
+      </div>
+    </ng-container>
+  </TabPane>
+  <TabPane [title]="'我的发现'">
+    <List class="item-position"  *ngIf="listObject1.length > 0;">
+      <PullToRefresh (onRefresh)="pullToRefresh1($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"
+        [(ngModel)]="state.refreshState" [endReachedRefresh]="state.endReachedRefresh">
+        <ng-container *ngFor="let item of listObject1">
+          <div class="ml-interval"></div>
+          <div (click)="checkYH1(item)">
+          <ListItem [extra]="extraStatus">{{item.dangerName}}</ListItem>
+          <ng-template #extraStatus>
+            <Badge *ngIf="item.dangerState === '-1'" class="autopay" [text]="'审核中'" [setStyle]="autopayStyle"></Badge>
+            <Badge *ngIf="item.dangerState === '0'" class="autopay" [text]="'整改中'" [setStyle]="autopayStyle1"></Badge>
+            <Badge *ngIf="item.dangerState === '1'" class="autopay" [text]="'待验收'" [setStyle]="autopayStyle2"></Badge>
+            <Badge *ngIf="item.dangerState === '9'" class="autopay" [text]="'已验收'" [setStyle]="autopayStyle"></Badge>
+            <Badge *ngIf="item.dangerState === '6'" class="autopay" [text]="'已关闭'" [setStyle]="autopayStyle1"></Badge>
+          </ng-template>
+          <ListItem>{{item.dangerDesc}}</ListItem>
+          <ListItem [extra]="item.dangerName">{{item.hazardDangerTypeName}}</ListItem>
+          </div>
+        </ng-container>
+      </PullToRefresh>
+      <div *ngIf="listObject1.length < total; else elseBlock " class="tabs-device-button">
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+        <a (click)="onClick1()">点击继续加载数据</a>
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+      </div>
+      <ng-template #elseBlock>
+        <div class="tabs-device-button">
+          <WhiteSpace [size]="'xl'"></WhiteSpace>
+          已经没有更多的数据加载
+          <WhiteSpace [size]="'xl'"></WhiteSpace>
+        </div>
+      </ng-template>
+    </List>
+    <ng-container *ngIf="listObject1.length < 1">
+      <div class="no-data">
+        <img src="assets/scyf/no-data.svg">
+        <p>暂无数据</p>
+      </div>
+    </ng-container>
+  </TabPane>
+</Tabs>

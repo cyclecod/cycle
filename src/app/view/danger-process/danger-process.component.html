@@ -1,0 +1,65 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-29 15:58:45
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-10-24 15:24:07
+-->
+<ng-container *ngIf="isChoose === 'danger-add'">
+  <div class="ml-title-bg">
+    <div class="ml-back" (click)="titleBack()">
+      <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+    </div>
+    <div class="ml-title">隐患审核</div>
+  </div>
+  <div class="ml-interval"></div>
+  <div class="ml-gray-bar">
+    <ml-gray-bar data="基本信息"></ml-gray-bar>
+  </div>
+
+  <List class="item-position">
+    <ListItem [extra]="objectData.hazardDangerTypeName">隐患类型</ListItem>
+    <ListItem [extra]="objectData.dangerLevelName">隐患等级</ListItem>
+    <ListItem [extra]="objectData.dangerSrcName">隐患来源</ListItem>
+    <ListItem [extra]="objectData.dangerDesc" [wrap]="true">措施名称</ListItem>
+    <ListItem [extra]="objectData.dangerManageTypeName">治理类型</ListItem>
+    <ListItem [extra]="objectData.dangerReason" [wrap]="true">形成原因</ListItem>
+    <ListItem [extra]="objectData.dangerManageDeadline">计划完成时间</ListItem>
+    <!-- <ListItem [extra]="objectData.liablePersonName">整改人名称</ListItem> -->
+    <!-- <ListItem [extra]="extraStatus">任务状态</ListItem>
+    <ng-template #extraStatus>
+      <Badge *ngIf="objectData.dangerState === '-1'" class="autopay" [text]="'审核中'" [setStyle]="autopayStyle"></Badge>
+      <Badge *ngIf="objectData.dangerState === '0'" class="autopay" [text]="'整改中'" [setStyle]="autopayStyle1"></Badge>
+      <Badge *ngIf="objectData.dangerState === '1'" class="autopay" [text]="'待验收'" [setStyle]="autopayStyle2"></Badge>
+      <Badge *ngIf="objectData.dangerState === '9'" class="autopay" [text]="'已验收'" [setStyle]="autopayStyle"></Badge>
+      <Badge *ngIf="objectData.dangerState === '6'" class="autopay" [text]="'已关闭'" [setStyle]="autopayStyle1"></Badge>
+    </ng-template> -->
+    <ng-container *ngIf="dangerImgList.length > 0">
+      <ml-gray-bar [data]="'隐患图片'"></ml-gray-bar>
+      <ph-image [fileList]="dangerImgList"></ph-image>
+    </ng-container>
+  </List>
+  
+  <div class="ml-interval"></div>
+  <div class="ml-gray-bar">
+    <ml-gray-bar data="隐患审核"></ml-gray-bar>
+  </div>
+  <List class="item-position">
+    <InputItem placeholder="请选择隐患状态" required [editable]="false" (click)="showPicker('shyf.dangerState.appal', 'dangerState')"
+      [value]="objectReview.dangerStateName" [content]="'隐患状态'">
+    </InputItem>
+    <ListItem DatePicker [extra]="getTime(dangerManageDeadline)" [arrow]="'horizontal'" [mode]="'date'"
+      [(ngModel)]='dangerManageDeadline' placeholder="请选择计划完成时间">
+      计划完成时间
+    </ListItem>
+    <InputItem placeholder="请选择整改人姓名" (click)="returnBack('choose-depart')" required [editable]="false"
+      [value]="objectReview.userName" [content]="'整改人'">
+    </InputItem>
+    <ml-gray-bar></ml-gray-bar>
+  </List>
+  <div Button [type]="'primary'" class="review-button" debounceClick [debounceTime]="300" (debounceClick)="onSave()">确认
+  </div>
+  <div class="ml-interval"></div>
+</ng-container>
+<ng-container *ngIf="isChoose === 'choose-depart'">
+  <ph-choose-department [(isUse)]="isChoose" (chooseData)="chooseData($event)"></ph-choose-department>
+</ng-container>

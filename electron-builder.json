@@ -1,0 +1,56 @@
+{
+  "productName": "com.baosight.scyfWP",
+  "appId": "com.electron.scyfWP",
+  "directories": {
+    "output": "release/"
+  },
+  "electronDownload": {
+    "cache": "%LOCALAPPDATA%/electron/Cache",
+    "mirror": "https://npm.taobao.org/mirrors/electron/",
+    "customDir": "v10.1.2"
+},
+    "files": [
+        "**/*",
+        "!**/*.ts",
+        "!*.code-workspace",
+        "!LICENSE.md",
+        "!package.json",
+        "!package-lock.json",
+        "!src/",
+        "!e2e/",
+        "!hooks/",
+        "!angular.json",
+        "!_config.yml",
+        "!karma.conf.js",
+        "!tsconfig.json",
+        "!tslint.json"
+    ],
+  "win": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "portable", "nsis","zip"
+    ]
+  },
+  "mac": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "AppImage"
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "guid": "xxxx",
+    "perMachine": true,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "双重预防"
+}
+}

@@ -1,0 +1,48 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-08-02 09:25:10
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-11-01 13:00:58
+-->
+<div class="tabs-wd">
+  <div class="ml-title">
+    <div class="ml-left-tip">
+      <img class="ml-tip-img" src="assets/scyf/personal_Notice.svg">
+    </div>
+    <div class="ml-ion-list">
+      <div class="ml-head-portrait">
+        <img src="assets/scyf/man01.svg">
+      </div>
+      <div class="ml-ion-label">
+        <div class="ml-user-name">{{userData.userName}}
+          <div class="ml-motto ml-right-one">
+            {{userData.loginName}}
+          </div>
+        </div>
+        <div class="ml-motto">生活不会亏待任何一个努力的人!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ml-interval"></div>
+  <div class="ml-user-div">
+    <div class="ml-user-list">
+        <img class="ml-list-img" src="assets/scyf/personal_software.svg" >
+        <div class="ml-list-title">
+            软件版本：0.0.12
+        </div>
+    </div>
+  <div class="ml-interval"></div>
+  <div class="ml-user-div">
+    <div class="ml-user-list" (click)="loginOut()">
+        <img class="ml-list-img" src="assets/scyf/personal_drop_out.svg" >
+        <div class="ml-list-title">
+            退出登录
+        </div>
+        <img class="ml-list-arrow" src="assets/scyf/personal_Jump.svg">
+        <!-- <div *ngIf="field.count" class="ml-ion-count">{{field.count}}</div>
+        <div *ngIf="field.textFlag" class="ml-ion-text">{{field.text}}</div>
+        <div *ngIf="field.textFlag" class="ml-red-point"></div> -->
+    </div>
+</div>
+</div>

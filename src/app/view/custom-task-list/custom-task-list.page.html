@@ -1,0 +1,60 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-28 14:15:07
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-19 14:05:57
+-->
+<div class="ml-title-bg">
+  <div *ngIf="!scan" class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div *ngIf="scan" class="ml-back" (click)="scan= false">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">待排查任务</div>
+  <!-- <div class="ml-title-button"></div>
+  <img (click)="scanDevice()" class="device-scan" src="assets/scyf/scan.svg"> -->
+</div>
+<ng-container *ngIf="scan">
+  <ph-scaner #deviceScan (scanData)="onScanData($event)"></ph-scaner> 
+</ng-container> 
+<!-- 设备信息 -->
+<ng-container *ngIf="!scan">
+  <List class="item-position"  *ngIf="listObject.length > 0; else elseBlock">
+    <PullToRefresh (onRefresh)="pullToRefresh($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"
+      [(ngModel)]="state.refreshState" [endReachedRefresh]="state.endReachedRefresh">
+      <ng-container *ngFor="let item of listObject">
+        <div class="ml-interval"></div>
+        <!-- <div (click)="checkDevice(item)"> -->
+          <ListItem>{{item.planName}}</ListItem>
+          <ListItem [extra]="item.checkCycleName">排查周期</ListItem>
+          <ListItem [extra]="item.leftTimeName">剩余时间</ListItem>
+          <ListItem [extra]="item.checkContent">排查内容</ListItem>
+          <ListItem>
+            <button (click)="normal(item)" class="review-button-1">正常</button>
+            <button (click)="checkDevice(item)" class="review-button-2" >异常</button>
+          </ListItem>
+          
+        <!-- </div> -->
+      </ng-container>
+    </PullToRefresh>
+    <div *ngIf="listObject.length < total; else elseBlock " class="tabs-device-button">
+      <WhiteSpace [size]="'xl'"></WhiteSpace>
+      <a (click)="onClick()">点击继续加载数据</a>
+      <WhiteSpace [size]="'xl'"></WhiteSpace>
+    </div>
+    <ng-template #elseBlock>
+      <div class="tabs-device-button">
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+        已经没有更多的数据加载
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+      </div>
+    </ng-template>
+  </List>
+  <ng-template #elseBlock>
+    <div class="no-data">
+      <img src="assets/scyf/no-data.svg">
+      <p>暂无数据</p>
+    </div>
+  </ng-template>
+</ng-container>

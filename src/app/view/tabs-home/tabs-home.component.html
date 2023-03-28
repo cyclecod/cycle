@@ -1,0 +1,95 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-28 09:56:07
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-10-22 09:00:57
+-->
+<div class="tabs-home">
+  <div class="ml-home-img">
+    <div>
+      <div class="ml-home-words-top">
+        首页
+      </div>
+      <div class="ml-home-words-one">
+        上海市危化品双重预防机制信息系统
+      </div>
+      <div class="ml-home-words-two">
+        综合·集约·精细
+      </div>
+    </div>
+  </div>
+  <div class="home-card">
+    <div class="home-card-title">
+      <div class="card-title"></div>
+      <div>双重预防</div>
+    </div>
+    <div class="home-card-content">
+      <div class="card-content1" (click)="onRoute('./risk-task-list', taskObject.taskListNum)">
+        <div class="card-content-label">待排查任务</div>
+        <div class="card-content1-value">{{taskObject.taskListNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
+        </div>
+      </div>
+      <div class="card-content2" (click)="onRoute('./risk-task-expire', taskObject.expireTaskNum)">
+        <div class="card-content-label">超期未排查任务</div>
+        <div class="card-content2-value">{{taskObject.expireTaskNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-unexpected-task.svg">
+        </div>
+      </div>
+    </div>
+      <div class="home-card-content">
+      <div class="card-content3" (click)="onRoute('./risk-danger-list', taskObject.dangerListNum)">
+        <div class="card-content-label">待处理隐患</div>
+        <div class="card-content1-value">{{taskObject.dangerListNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-dangers.svg">
+        </div>
+      </div>
+      <div class="card-content4" (click)="onRoute('./risk-danger-expire', taskObject.expireDangerNum)">
+        <div class="card-content-label">超期未整改隐患</div>
+        <div class="card-content2-value">{{taskObject.expireDangerNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-unexpected-task.svg">
+        </div>
+      </div>
+      <div class="card-content5" (click)="onRoute('./risk-danger-discover', taskObject.discoverDangerNum)">
+        <div class="card-content-label">发现未整改隐患</div>
+        <div class="card-content5-value">{{taskObject.discoverDangerNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-dangers-l.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-card">
+    <div class="home-card-title">
+      <div class="card-title"></div>
+      <div>自定义系统</div>
+    </div>
+    <div class="home-card-content">
+      <div class="card-content6" (click)="onRoute('./custom-task-list', customObject.taskListNum)">
+        <div class="card-content-label">待排查任务</div>
+        <div class="card-content6-value">{{customObject.taskListNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
+        </div>
+      </div>
+      <div class="card-content7" (click)="onRoute('./risk-danger-expire', customObject.doTaskNum)">
+        <div class="card-content-label">已排查任务</div>
+        <div class="card-content7-value">{{customObject.doTaskNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-unexpected-task.svg">
+        </div>
+      </div>
+    </div>
+    <div class="home-card-content">
+      <div class="card-content8" (click)="onRoute('./risk-danger-list', customObject.expireDangerNum)">
+        <div class="card-content-label">超期未整改隐患</div>
+        <div class="card-content8-value">{{customObject.expireDangerNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
+        </div>
+      </div>
+      <div class="card-content9" (click)="onRoute('./risk-danger-expire', customObject.delayDangerNum)">
+        <div class="card-content-label">延期审核隐患</div>
+        <div class="card-content9-value">{{customObject.delayDangerNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

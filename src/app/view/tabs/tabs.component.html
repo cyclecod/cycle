@@ -1,0 +1,55 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-27 10:02:28
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-09 15:34:24
+-->
+<TabBar [hidden]="false" barTintColor="white" tintColor="#108ee9" [ngStyle]="{ height: '100%' }"
+  [activeTab]="selectedIndex" unselectedTintColor="#888" tabBarPosition="bottom" (onPress)="tabBarTabOnPress($event)">
+  <TabBarItem title="首页" [key]="1" [icon]="icon1" [selectedIcon]="icon11">
+    <ng-template #icon1>
+      <img class="tab-icon" src="assets/scyf/tab-home0.svg">
+    </ng-template>
+    <ng-template #icon11>
+      <img class="tab-icon" src="assets/scyf/tab-home1.svg">
+    </ng-template>
+    <ph-tabs-home [tabsHome]="selectedIndex"></ph-tabs-home>
+  </TabBarItem>
+  <TabBarItem title="设备巡检" [key]="2" [icon]="icon2" [selectedIcon]="icon22">
+    <ng-template #icon2>
+      <img class="tab-icon" src="assets/scyf/tab-device0.svg">
+    </ng-template>
+    <ng-template #icon22>
+      <img class="tab-icon" src="assets/scyf/tab-device1.svg">
+    </ng-template>
+    <ph-tabs-device [device]="selectedIndex"></ph-tabs-device>
+  </TabBarItem>
+  <TabBarItem title="随手拍" [key]="3" [icon]="icon3" [selectedIcon]="icon33">
+    <ng-template #icon3>
+      <img class="tab-icon" src="assets/scyf/tab-camera0.svg">
+    </ng-template>
+    <ng-template #icon33>
+      <img class="tab-icon" src="assets/scyf/tab-camera1.svg">
+    </ng-template>
+    <ph-tabs-camera></ph-tabs-camera>
+    <!-- <ph-image [fileId]="fileId" [isEdit]="true" [fileList]="fileList"></ph-image> -->
+  </TabBarItem>
+  <TabBarItem title="隐患治理" [key]="4" [icon]="icon4" [selectedIcon]="icon44">
+    <ng-template #icon4>
+      <img class="tab-icon" src="assets/scyf/tab-zhl0.svg">
+    </ng-template>
+    <ng-template #icon44>
+      <img class="tab-icon" src="assets/scyf/tab-zhl1.svg">
+    </ng-template>
+     <ph-tabs-yh [tabsYH]="selectedIndex"></ph-tabs-yh>
+  </TabBarItem>
+  <TabBarItem title="我的" [key]="5" [icon]="icon5" [selectedIcon]="icon55">
+    <ng-template #icon5>
+      <img class="tab-icon" src="assets/scyf/tab-about0.svg">
+    </ng-template>
+    <ng-template #icon55>
+      <img class="tab-icon" src="assets/scyf/tab-about1.svg">
+    </ng-template>
+    <ph-tabs-about [userObject]="userData"></ph-tabs-about>
+  </TabBarItem>
+</TabBar>

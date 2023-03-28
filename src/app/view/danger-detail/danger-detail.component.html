@@ -1,0 +1,39 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-29 15:58:45
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-22 10:05:30
+-->
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">隐患整改</div>
+</div>
+<div class="ml-interval"></div>
+<List class="item-position">
+  <ListItem [extra]="objectData.hazardDangerTypeName">隐患类型</ListItem>
+  <ListItem [extra]="objectData.dangerLevelName">隐患等级</ListItem>
+  <ListItem [extra]="objectData.dangerSrcName">隐患来源</ListItem>
+  <ListItem [extra]="objectData.dangerDesc" [wrap]="true">措施名称</ListItem>
+  <ListItem [extra]="objectData.dangerManageTypeName">治理类型</ListItem>
+  <ListItem [extra]="objectData.dangerReason" [wrap]="true">形成原因</ListItem>
+  <ListItem [extra]="objectData.dangerManageDeadline">计划完成时间</ListItem>
+  <ListItem [extra]="objectData.liablePersonName">整改人名称</ListItem>
+  <!-- <ListItem multipleLine>
+    排查内容
+    <Brief>{{objectData.troubleshootContent}}</Brief>
+  </ListItem> -->
+  <ListItem [extra]="extraStatus">任务状态</ListItem>
+  <ng-template #extraStatus>
+    <Badge *ngIf="objectData.state === '0'" class="autopay" [text]="'整改中'" [setStyle]="autopayStyle"></Badge>
+    <Badge *ngIf="objectData.state === '1'" class="autopay" [text]="'待验收'" [setStyle]="autopayStyle1"></Badge>
+    <Badge *ngIf="objectData.state === '9'" class="autopay" [text]="'已验收'" [setStyle]="autopayStyle2"></Badge>
+  </ng-template>
+  <ng-container *ngIf="fileList.length > 0">
+    <div class="ml-interval"></div>
+    <ml-gray-bar [data]="'隐患图片'"></ml-gray-bar>
+    <ph-image [fileList]="fileList"></ph-image>
+  </ng-container>
+
+</List>

@@ -1,0 +1,41 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-28 14:15:07
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-19 14:04:00
+-->
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">选择单元</div>
+</div>
+<List class="item-position"  *ngIf="listObject.length > 0; else elseBlock">
+<PullToRefresh (onRefresh)="pullToRefresh($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"
+  [(ngModel)]="state.refreshState" [endReachedRefresh]="state.endReachedRefresh">
+  <ng-container *ngFor="let item of listObject">
+    <div class="ml-interval"></div>
+    <div (click)="checkDevice(item)">
+      <ListItem >{{item.unitName}}</ListItem>
+    </div>
+  </ng-container>
+</PullToRefresh>
+<div *ngIf="listObject.length < total; else elseBlock " class="tabs-device-button">
+  <WhiteSpace [size]="'xl'"></WhiteSpace>
+  <a (click)="onClick()">点击继续加载数据</a>
+  <WhiteSpace [size]="'xl'"></WhiteSpace>
+</div>
+<ng-template #elseBlock>
+  <div class="tabs-device-button">
+    <WhiteSpace [size]="'xl'"></WhiteSpace>
+    已经没有更多的数据加载
+    <WhiteSpace [size]="'xl'"></WhiteSpace>
+  </div>
+</ng-template>
+</List>
+<ng-template #elseBlock>
+<div class="no-data">
+  <img src="assets/scyf/no-data.svg">
+  <p>暂无数据</p>
+</div>
+</ng-template>
