@@ -6,77 +6,90 @@
 -->
 <ng-container *ngIf="isChoose === 'danger-add'">
   <div class="ml-title-bg">
+    <div class="ml-back" (click)="titleBack()">
+      <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+    </div>
     <div class="ml-title">隐患填报</div>
-    <!-- <div class="ml-title-button"></div> -->
   </div>
   <div class="ml-interval"></div>
   <List class="item-position">
     <InputItem placeholder="请输入隐患名称" [(ngModel)]="objectData.dangerName" [content]="'隐患名称'">
     </InputItem>
 
-    <InputItem placeholder="隐患登记" [editable]="false"
-      (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
-      [content]="'隐患登记'">
+    <InputItem placeholder="隐患等级" [editable]="false"
+      (click)="showPicker('dangerLevel', 'dangerLevel')" [value]="selectData.dangerLevel"
+      [content]="'隐患等级'">
     </InputItem>
 
     <InputItem placeholder="所属工厂" [editable]="false"
-      (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
+      (click)="showPicker('factoryInfo', 'factoryId')" [value]="selectData.factoryId"
       [content]="'所属工厂'">
     </InputItem>
 
     <InputItem placeholder="所属区域" [editable]="false"
-      (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
+      (click)="showPicker('areaInfo', 'areaId')" [value]="selectData.areaId"
       [content]="'所属区域'">
     </InputItem>
 
-    <InputItem placeholder="排查类型" [editable]="false" (click)="showPicker('shyf.dangerLevel', 'dangerLevel')"
-      [value]="selectData.dangerLevel" [content]="'排查类型'">
-    </InputItem>
+    <TextareaItem placeholder="排查类型" [(ngModel)]="objectData.planName" [clear]="true" [title]="'排查类型'" [editable]="false"
+      [autoHeight]="true" [labelNumber]="2">
+    </TextareaItem>
 
-    <InputItem placeholder="参与排查人" [editable]="false" (click)="showPicker('shyf.dangerSrc', 'dangerSrc')"
-      [value]="selectData.dangerSrc" [content]="'参与排查人'">
-    </InputItem>
-
-    <InputItem placeholder="班组" [editable]="false" (click)="showPicker('shyf.dangerSrc', 'dangerSrc')"
-      [value]="selectData.dangerSrc" [content]="'班组'">
+    <TextareaItem placeholder="参与排查人" [(ngModel)]="objectData.checkHelper" [clear]="true" [title]="'参与排查人'" [editable]="false"
+      [autoHeight]="true" [labelNumber]="2">
+    </TextareaItem>
+ 
+    <InputItem placeholder="班组" [(ngModel)]="objectData.team" [content]="'班组'">
     </InputItem>
 
     <InputItem placeholder="隐患一级分类" [editable]="false"
-      (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
+      (click)="showPicker('dangerFirstCategory', 'dangerFirstCategory')" [value]="selectData.dangerFirstCategory"
       [content]="'隐患一级分类'">
     </InputItem>
 
     <InputItem placeholder="隐患二级分类" [editable]="false"
-      (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
+      (click)="showPicker('dangerSecondCategory', 'dangerSecondCategory')" [value]="selectData.dangerSecondCategory"
       [content]="'隐患二级分类'">
     </InputItem>
 
 
-    <TextareaItem placeholder="二级分类说明" [(ngModel)]="objectData.dangerDesc" [clear]="true" [title]="'二级分类说明'"
+    <TextareaItem placeholder="二级分类说明" [(ngModel)]="objectData.typeDesc" [clear]="true" [title]="'二级分类说明'" [editable]="false"
       [autoHeight]="true" [labelNumber]="2">
     </TextareaItem>
 
    
 
-    <TextareaItem placeholder="隐患描述" [(ngModel)]="objectData.dangerReason" [clear]="true" [title]="'隐患描述'"
+    <TextareaItem placeholder="隐患描述" [(ngModel)]="objectData.dangerDesc" [clear]="true" [title]="'隐患描述'"
       [autoHeight]="true" [labelNumber]="2">
     </TextareaItem>
 
-    <InputItem placeholder="形成原因" [editable]="false"
-    (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
-    [content]="'形成原因'">
-  </InputItem>
+    <!-- <InputItem placeholder="形成原因"
+      (click)="showPicker('dangerCauseReason', 'dangerCauseReason')" [value]="selectData.dangerCauseReason"
+      [content]="'形成原因'">
+    </InputItem> -->
 
-  <InputItem placeholder="治理类型" [editable]="false"
-      (click)="showPicker('shyf.hazardDangerType', 'hazardDangerType')" [value]="selectData.hazardDangerType"
+    <List renderHeader="形成原因" class="jzy-checkBox">
+    <CheckboxItem
+        *ngFor="let i of codeValueList.dangerCauseReason"
+        [name]="i.itemCname"
+        [value]="i.itemCode"
+        [(ngModel)]="i.checked"
+     
+      >
+        {{ i.itemCname }}
+      </CheckboxItem>
+    </List>
+
+    <InputItem placeholder="治理类型" [editable]="false"
+      (click)="showPicker('dangerManageType', 'dangerManageType')" [value]="selectData.dangerManageType"
       [content]="'治理类型'">
     </InputItem>
 
-    <TextareaItem placeholder="建议整改措施" [(ngModel)]="objectData.dangerReason" [clear]="true" [title]="'建议整改措施'"
+    <TextareaItem placeholder="建议整改措施" [(ngModel)]="objectData.dangerControlMeasures" [clear]="true" [title]="'建议整改措施'"
       [autoHeight]="true" [labelNumber]="2">
     </TextareaItem>
 
-    <TextareaItem placeholder="现场整改措施" [(ngModel)]="objectData.dangerReason" [clear]="true" [title]="'现场整改措施'"
+    <TextareaItem placeholder="现场整改措施" [(ngModel)]="objectData.dangerMeasuresNow" [clear]="true" [title]="'现场整改措施'"
       [autoHeight]="true" [labelNumber]="2">
     </TextareaItem>
 

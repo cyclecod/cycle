@@ -50,23 +50,28 @@
       </div>
     </ng-container>
   </TabPane>
-  <TabPane [title]="'我的发现'">
+  <TabPane [title]="'自定义隐患治理'">
     <List class="item-position"  *ngIf="listObject1.length > 0;">
       <PullToRefresh (onRefresh)="pullToRefresh1($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"
         [(ngModel)]="state.refreshState" [endReachedRefresh]="state.endReachedRefresh">
         <ng-container *ngFor="let item of listObject1">
           <div class="ml-interval"></div>
           <div (click)="checkYH1(item)">
-          <ListItem [extra]="extraStatus">{{item.dangerName}}</ListItem>
-          <ng-template #extraStatus>
+          <!-- <ListItem [extra]="extraStatus">{{item.dangerName}}</ListItem> -->
+          <!-- <ListItem [className]="'special-badge'" extra="{{item.dangerState | statePipe : stateList}}">
+            {{item.dangerName}}
+          </ListItem> -->
+          <ListItem [className]="'special-badge'" [extra]="item.stateName"></ListItem>
+          <ListItem [className]="'special-badge'">{{item.dangerName}}</ListItem>
+          <!-- <ng-template #extraStatus>
             <Badge *ngIf="item.dangerState === '-1'" class="autopay" [text]="'审核中'" [setStyle]="autopayStyle"></Badge>
             <Badge *ngIf="item.dangerState === '0'" class="autopay" [text]="'整改中'" [setStyle]="autopayStyle1"></Badge>
             <Badge *ngIf="item.dangerState === '1'" class="autopay" [text]="'待验收'" [setStyle]="autopayStyle2"></Badge>
-            <Badge *ngIf="item.dangerState === '9'" class="autopay" [text]="'已验收'" [setStyle]="autopayStyle"></Badge>
+            <Badge *ngIf="item.dangerState === '3'" class="autopay" [text]="'已验收'" [setStyle]="autopayStyle"></Badge>
             <Badge *ngIf="item.dangerState === '6'" class="autopay" [text]="'已关闭'" [setStyle]="autopayStyle1"></Badge>
-          </ng-template>
-          <ListItem>{{item.dangerDesc}}</ListItem>
-          <ListItem [extra]="item.dangerName">{{item.hazardDangerTypeName}}</ListItem>
+          </ng-template> -->
+          <!-- <ListItem>{{item.dangerName}}</ListItem> -->
+          <ListItem [extra]="item.registTime">{{item.hazardDangerTypeName}}</ListItem>
           </div>
         </ng-container>
       </PullToRefresh>

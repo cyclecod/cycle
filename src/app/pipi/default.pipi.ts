@@ -105,3 +105,15 @@ export class SmallCodeValuePipe implements PipeTransform {
         return value;
     }
 }
+
+@Pipe({
+        name: 'statePipe'
+    })
+    export class StatePipe implements PipeTransform {
+        transform(data: string, list: any) {
+        
+            return list[data];
+        
+        }
+        
+    }

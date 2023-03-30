@@ -10,6 +10,8 @@ import { HttpService } from '../../service/http.service';
 import { LocalStorageStore } from '../../service/local-storage.service';
 import { CheckService } from '../../service/check.service';
 import { LoadingService } from '../../service/loading.service';
+// import { StatePipe } from '../../pipi/default.pipi';
+
 
 @Component({
   selector: 'ph-tabs-yh',
@@ -127,6 +129,12 @@ export class TabYHComponent implements OnInit, OnChanges {
       },
     ]
   };
+
+  stateList = {
+    '1': '一',
+    '2': '二',
+    '3': '三'
+  }
   // 我的整改
   listObject: any = [
     // {
@@ -225,7 +233,7 @@ export class TabYHComponent implements OnInit, OnChanges {
 
   async getList1(query: any) {
     this.loadingService.loading(true);
-    await this.http.post('getDiscoverDangerList', query).then(async (res: any) => {
+    await this.http.post('getAutoMendDangerList', query).then(async (res: any) => {
       if (res.code === 200) {
         for (const key of res.data) {
           key.hazardDangerTypeName = await this.getCodeValue(key.hazardDangerType, 'shyf.hazardDangerType');
@@ -243,6 +251,7 @@ export class TabYHComponent implements OnInit, OnChanges {
   * 下拉刷新
   */
   pullToRefresh(event: any): void {
+    this.listObject = [];
     this.pageQuery.page = 1;
     this.getList(this.pageQuery);
   }
@@ -250,6 +259,7 @@ export class TabYHComponent implements OnInit, OnChanges {
   * 下拉刷新
   */
   pullToRefresh1(event: any): void {
+    this.listObject1 = [];
     this.pageQuery1.page = 1;
     this.getList1(this.pageQuery1);
   }

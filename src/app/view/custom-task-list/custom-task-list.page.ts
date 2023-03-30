@@ -59,24 +59,24 @@ export class CustomTaskListComponent implements OnInit, OnChanges {
   }
   ngOnChanges(): void {
   }
-  scanDevice(): void {
-    if (this.scan) {
-      if (this.deviceScan) {
-        this.deviceScan.fullStop();
-      }
-    }
-    this.scan = true;
-  }
-  onScanData(event: any): void {
-    this.scan = false;
-    if (event.data !== undefined) {
-      const object = JSON.parse(event.data);
-      this.deviceScan.fullStop();
-      this.router.navigate(['risk-investigate'], { queryParams: object });
-    } else {
-      this.checkService.commonToast('获取扫描信息失败，请重新扫码！');
-    }
-  }
+  // scanDevice(): void {
+  //   if (this.scan) {
+  //     if (this.deviceScan) {
+  //       this.deviceScan.fullStop();
+  //     }
+  //   }
+  //   this.scan = true;
+  // }
+  // onScanData(event: any): void {
+  //   this.scan = false;
+  //   if (event.data !== undefined) {
+  //     const object = JSON.parse(event.data);
+  //     this.deviceScan.fullStop();
+  //     this.router.navigate(['risk-investigate'], { queryParams: object });
+  //   } else {
+  //     this.checkService.commonToast('获取扫描信息失败，请重新扫码！');
+  //   }
+  // }
 
   /**
   * 下拉刷新
@@ -122,29 +122,23 @@ export class CustomTaskListComponent implements OnInit, OnChanges {
     this.loadingService.loading(true);
     console.log(event);
     const userData: any = this.storage.get('userMsg');
-    // await this.http.post('sureAutoTask', {
-    //   "id": this.generateUUID,
-    //   "checkTaskId":event.id,
-    //   "userId":userData.loginName,
-    //   "checkTime":this.timestampToTime(),
-    //   "checkStatus":"0"
-    // }).then((res: any) => {
-    //   if (res.code === 200) {
-    //     for (const key of res.data) {
-    //       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    //       key.leftTimeName = '剩余:' + key.leftTime;
-    //       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    //       key.checkCycleName = key.checkCycle + key.checkCycleUnit;
-    //       this.listObject.push(key);
-    //     }
-    //     this.total = res.total;
-    //     this.loadingService.loading(false);
-    //   } else {
-    //     this.loadingService.loading(false);
-    //     this.checkService.commonToast(res.msg);
-    //   }
-    // });
-    // this.router.navigate(['tabs'], { queryParams: event });
+    const date = {
+      "id": this.generateUUID,
+      "checkTaskId":event.id,
+      "userId":userData.loginName,
+      "checkTime":this.timestampToTime(),
+      "checkStatus":"0"
+    }
+    await this.http.post('sureAutoTask', date ).then((res: any) => {
+      if (res.code === 200) {
+        this.loadingService.loading(false);
+        this.checkService.commonToast('保存成功');
+      } else {
+        this.loadingService.loading(false);
+        this.checkService.commonToast(res.msg);
+      }
+    });
+    this.router.navigate(['tabs'], { queryParams: event });
   }
 
   // 我的发现

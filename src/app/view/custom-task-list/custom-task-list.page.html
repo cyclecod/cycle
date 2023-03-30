@@ -15,9 +15,9 @@
   <!-- <div class="ml-title-button"></div>
   <img (click)="scanDevice()" class="device-scan" src="assets/scyf/scan.svg"> -->
 </div>
-<ng-container *ngIf="scan">
+<!-- <ng-container *ngIf="scan">
   <ph-scaner #deviceScan (scanData)="onScanData($event)"></ph-scaner> 
-</ng-container> 
+</ng-container>  -->
 <!-- 设备信息 -->
 <ng-container *ngIf="!scan">
   <List class="item-position"  *ngIf="listObject.length > 0; else elseBlock">
