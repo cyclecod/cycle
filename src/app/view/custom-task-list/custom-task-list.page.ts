@@ -123,11 +123,11 @@ export class CustomTaskListComponent implements OnInit, OnChanges {
     console.log(event);
     const userData: any = this.storage.get('userMsg');
     const date = {
-      "id": this.generateUUID,
-      "checkTaskId":event.id,
-      "userId":userData.loginName,
-      "checkTime":this.timestampToTime(),
-      "checkStatus":"0"
+      id : this.generateUUID(),
+      checkTaskId:event.id,
+      userId:userData.loginName,
+      checkTime:this.timestampToTime(),
+      checkStatus:'0'
     }
     await this.http.post('sureAutoTask', date ).then((res: any) => {
       if (res.code === 200) {

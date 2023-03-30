@@ -105,3 +105,6 @@
 ::ng-deep.am-list-item .am-list-line .am-list-extra {
   flex-basis: 40%;
 }
+.am-list-item .am-input-control input , .am-textarea-control textarea {
+  text-align: end;
+}

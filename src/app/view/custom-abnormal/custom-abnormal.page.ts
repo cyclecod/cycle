@@ -156,7 +156,7 @@ export class CustomAbnormalComponent implements OnInit, OnChanges {
       await this.http.post('saveAutoDanger', object).then((res: any) => {
         if (res.code === 200) {
           this.loadingService.loading(false);
-          this.checkService.commonToast('保存成功');
+          this.checkService.commonToast('提交成功');
           this.titleBack();
         } else {
           this.loadingService.loading(false);
@@ -174,7 +174,7 @@ export class CustomAbnormalComponent implements OnInit, OnChanges {
     // if (this.isNull(object.dangerManageDeadline)) {
     //   object.dangerManageDeadline = moment(object.dangerManageDeadline).format('YYYY-MM-DD');
     // }
-    object.dangerState = '1';
+    object.dangerState = '2'; //表示已提交
     return object;
   }
 
