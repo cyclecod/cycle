@@ -8,7 +8,7 @@
     <div class="ml-back" (click)="titleBack()">
       <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
     </div>
-    <div class="ml-title">超期未整改隐患</div>
+    <div class="ml-title">已排查任务</div>
   </div>
   <List class="item-position" *ngIf="listObject.length > 0;">
     <PullToRefresh (onRefresh)="pullToRefresh($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"

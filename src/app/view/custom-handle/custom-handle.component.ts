@@ -14,13 +14,13 @@ import { LoadingService } from '../../service/loading.service';
 
 
 @Component({
-  selector: 'ph-tabs-yh',
-  templateUrl: './tabs-yh.component.html',
-  styleUrls: ['./tabs-yh.component.less'],
+  selector: 'ph-custom-handle',
+  templateUrl: './custom-handle.component.html',
+  styleUrls: ['./custom-handle.component.less'],
 })
-export class TabYHComponent implements OnInit, OnChanges {
+export class CustomHandleComponent implements OnInit, OnChanges {
   @Input() tabsYH = 3;
-  pageIndex = 0;
+  scan = false;
 
   state = {
     refreshState: {
@@ -155,26 +155,7 @@ export class TabYHComponent implements OnInit, OnChanges {
       userId: '',
     },
   };
-  // 我的发现
-  listObject1: any = [
-    // {
-    //   dangerName: '测试',
-    //   dangerDesc: '测试测试测试测试',
-    //   dangerName: '测试测试',
-    //   hazardDangerTypeName: '测试测试',
-    //   dangerState: '0',
-    // }
-  ];
 
-  total1 = 0;
-  index1 = 1;
-  pageQuery1 = {
-    page: 1,
-    limit: 10,
-    queryParams: {
-      userId: '',
-    },
-  };
   userData: any = {
     userName: '',
     loginName: '',
@@ -188,40 +169,47 @@ export class TabYHComponent implements OnInit, OnChanges {
   ) {
   }
 
-  ngOnInit() { }
-  ngOnChanges() {
+  ngOnInit() {
     this.userData = this.storage.get('userMsg');
     this.pageQuery.queryParams.userId = this.userData.loginName;
-    this.pageQuery1.queryParams.userId = this.userData.loginName;
-    if (this.tabsYH !== undefined && this.tabsYH === 3) {
-      this.pageQuery.page = 1;
-      this.getList(this.pageQuery);
-    }
+    this.pageQuery.page = 1;
+    this.getList(this.pageQuery);
+   }
+  ngOnChanges() {
+   
+  }
+  titleBack(): void {
+    history.go(-1);
   }
 
-  onTabClick(item: any): void {
-    this.pageIndex = item.index;
-    if (this.pageIndex === 0) {
-      this.listObject = [];
-      this.pageQuery.page = 1;
-      this.getList(this.pageQuery);
-    } else {
-      this.listObject1 = [];
-      this.pageQuery1.page = 1;
-      this.getList1(this.pageQuery1);
-    }
-  }
 
+  // async getList(query: any) {
+  //   this.loadingService.loading(true);
+  //   await this.http.post('getAdjustDangerList', query).then(async (res: any) => {
+  //     if (res.code === 200) {
+  //       for (const key of res.data) {
+  //         key.hazardDangerTypeName = await this.getCodeValue(key.hazardDangerType, 'shyf.hazardDangerType');
+  //         this.listObject.push(key);
+  //       }
+
+  //       this.loadingService.loading(false);
+  //       this.total = res.total;
+  //     } else {
+  //       this.loadingService.loading(false);
+  //       this.checkService.commonToast(res.msg);
+  //     }
+  //   });
+  // }
 
   async getList(query: any) {
     this.loadingService.loading(true);
-    await this.http.post('getAdjustDangerList', query).then(async (res: any) => {
+    // await this.http.post('getAutoMendDangerList', query).then(async (res: any) => {
+      await this.http.post('getAutoDangerList', query).then(async (res: any) => {
       if (res.code === 200) {
         for (const key of res.data) {
           key.hazardDangerTypeName = await this.getCodeValue(key.hazardDangerType, 'shyf.hazardDangerType');
           this.listObject.push(key);
         }
-
         this.loadingService.loading(false);
         this.total = res.total;
       } else {
@@ -230,38 +218,13 @@ export class TabYHComponent implements OnInit, OnChanges {
       }
     });
   }
-
-  async getList1(query: any) {
-    this.loadingService.loading(true);
-    await this.http.post('getAutoDangerList', query).then(async (res: any) => {
-      if (res.code === 200) {
-        for (const key of res.data) {
-          key.hazardDangerTypeName = await this.getCodeValue(key.hazardDangerType, 'shyf.hazardDangerType');
-          this.listObject1.push(key);
-        }
-        this.loadingService.loading(false);
-        this.total1 = res.total;
-      } else {
-        this.loadingService.loading(false);
-        this.checkService.commonToast(res.msg);
-      }
-    });
-  }
-  /**
-  * 下拉刷新
-  */
-  pullToRefresh(event: any): void {
-    this.listObject = [];
-    this.pageQuery.page = 1;
-    this.getList(this.pageQuery);
-  }
   /**
   * 下拉刷新
   */
   pullToRefresh1(event: any): void {
-    this.listObject1 = [];
-    this.pageQuery1.page = 1;
-    this.getList1(this.pageQuery1);
+    this.listObject = [];
+    this.pageQuery.page = 1;
+    this.getList(this.pageQuery);
   }
 
   onClick(): void {
@@ -271,16 +234,6 @@ export class TabYHComponent implements OnInit, OnChanges {
       this.getList(this.pageQuery);
     } else {
       this.index = 1;
-    }
-  }
-
-  onClick1(): void {
-    if (this.total1 !== this.listObject1.length) {
-      this.index1++;
-      this.pageQuery1.page = this.index1;
-      this.getList1(this.pageQuery1);
-    } else {
-      this.index1 = 1;
     }
   }
 

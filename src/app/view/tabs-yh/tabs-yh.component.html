@@ -50,6 +50,8 @@
       </div>
     </ng-container>
   </TabPane>
+
+  
   <TabPane [title]="'自定义隐患治理'">
     <List class="item-position"  *ngIf="listObject1.length > 0;">
       <PullToRefresh (onRefresh)="pullToRefresh1($event)" [ngStyle]="dtPullToRefreshStyle" [direction]="state.direction"
@@ -62,7 +64,8 @@
             {{item.dangerName}}
           </ListItem> -->
           <ListItem [className]="'special-badge'" [extra]="item.stateName"></ListItem>
-          <ListItem [className]="'special-badge'">{{item.dangerName}}</ListItem>
+          <ListItem [className]="'special-badge'" [extra]="item.dangerName">隐患名称:</ListItem>
+          <ListItem [className]="'special-badge'" [extra]="item.dangerDesc">隐患描述:</ListItem>
           <!-- <ng-template #extraStatus>
             <Badge *ngIf="item.dangerState === '-1'" class="autopay" [text]="'审核中'" [setStyle]="autopayStyle"></Badge>
             <Badge *ngIf="item.dangerState === '0'" class="autopay" [text]="'整改中'" [setStyle]="autopayStyle1"></Badge>
@@ -71,7 +74,8 @@
             <Badge *ngIf="item.dangerState === '6'" class="autopay" [text]="'已关闭'" [setStyle]="autopayStyle1"></Badge>
           </ng-template> -->
           <!-- <ListItem>{{item.dangerName}}</ListItem> -->
-          <ListItem [extra]="item.registTime">{{item.hazardDangerTypeName}}</ListItem>
+          <ListItem [extra]="item.registTime">登记时间</ListItem>
+          <ListItem [extra]="item.dangerManageDeadline">整改完成期限</ListItem>
           </div>
         </ng-container>
       </PullToRefresh>

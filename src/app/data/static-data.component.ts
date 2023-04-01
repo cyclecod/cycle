@@ -142,5 +142,6 @@ export const codeValueComponent = {
       itemCode: '9',
       itemCname: '已验收'
     },
-  ]
+  ],
+  'dangerCauseReason':[]
 };

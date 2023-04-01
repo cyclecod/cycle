@@ -71,7 +71,7 @@ export class ChooseDepartmentPage implements OnInit, OnChanges {
 
   goBackFunc(item: any): void {
     const object = {
-      code: item.loginName,
+      code: item.label,
       name: item.text,
     };
     this.isUse = 'danger-add';

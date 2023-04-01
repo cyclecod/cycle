@@ -95,6 +95,7 @@ export class ChooseUnitComponent implements OnInit, OnChanges {
     const object = {
       code: event.id,
       name: event.unitName,
+      hazardCode: event.hazardCode
     };
     this.isUse = 'danger-add';
     this.isUseChange.emit('danger-add');

@@ -25,6 +25,9 @@ import { DangerProcessComponent } from './view/danger-process/danger-process.com
 import { DangerAcceptComponent } from './view/danger-accept/danger-accept.component';
 import {CustomTaskListComponent} from './view/custom-task-list/custom-task-list.page';
 import {CustomAbnormalComponent} from './view/custom-abnormal/custom-abnormal.page'
+import {CustomDetailComponent} from './view/custom-detail/custom-detail.page'
+import {CustomDangerExpire} from './view/custom-danger-expire/custom-danger-expire.page'
+import {CustomHandleComponent} from './view/custom-handle/custom-handle.component'
  
 const routes: Routes = [
   {
@@ -93,6 +96,15 @@ const routes: Routes = [
   },
   {path: 'custom-abnormal',
   component: CustomAbnormalComponent
+  },
+  {path: 'custom-detail',
+  component: CustomDetailComponent
+  },
+  {path: 'custom-danger-expire',
+  component: CustomDangerExpire
+  },
+  {path: 'custom-handle-list',
+  component: CustomHandleComponent
   },
 
   // {

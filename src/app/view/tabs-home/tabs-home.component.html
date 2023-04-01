@@ -70,17 +70,23 @@
           <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
         </div>
       </div>
-      <div class="card-content7" (click)="onRoute('./risk-danger-expire', customObject.doTaskNum)">
+      <div class="card-content8" (click)="onRoute('./custom-handle-list', customObject.dangerNum)">
+        <div class="card-content-label">待处理隐患</div>
+        <div class="card-content8-value">{{customObject.dangerNum}}
+          <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
+        </div>
+      </div>
+      <!-- <div class="card-content7" (click)="onRoute('./custom-danger-expire', customObject.doTaskNum)">
         <div class="card-content-label">已排查任务</div>
         <div class="card-content7-value">{{customObject.doTaskNum}}
           <img class="icon ion-icon content-value-img" src="assets/scyf/home-unexpected-task.svg">
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="home-card-content">
-      <div class="card-content8" (click)="onRoute('./risk-danger-list', customObject.expireDangerNum)">
-        <div class="card-content-label">超期未整改隐患</div>
-        <div class="card-content8-value">{{customObject.expireDangerNum}}
+    <!-- <div class="home-card-content">
+      <div class="card-content8" (click)="onRoute('./custom-handle-list', customObject.dangerNum)">
+        <div class="card-content-label">待处理隐患</div>
+        <div class="card-content8-value">{{customObject.dangerNum}}
           <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
         </div>
       </div>
@@ -90,6 +96,6 @@
           <img class="icon ion-icon content-value-img" src="assets/scyf/home-check-task.svg">
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

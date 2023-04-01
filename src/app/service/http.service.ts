@@ -13,6 +13,7 @@ export class HttpService {
   
 
   private baseUrl = 'http://8.130.13.156/nhuyy/webapp/'
+  // private baseUrl = 'http://192.168.3.13:8080/nhuyy_Web_exploded/webapp/'
   // private baseUrl = 'https://ydbg.yjglj.shanghai.gov.cn:8088/nhuyy/webapp/';
 
   // private baseUrl = 'http://172.26.1.71:8088/nhuajs/webapp/';

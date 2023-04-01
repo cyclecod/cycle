@@ -1,0 +1,52 @@
+<!--
+ * @Author: 九阳
+ * @Date: 2022-07-29 15:58:45
+ * @LastEditors: 九阳
+ * @LastEditTime: 2022-08-22 10:05:30
+-->
+<div class="ml-title-bg">
+  <div class="ml-back" (click)="titleBack()">
+    <img class="ml-back-img" src="assets/scyf/top_left_back.svg">
+  </div>
+  <div class="ml-title">隐患整改</div>
+</div>
+<div class="ml-interval"></div>
+<List class="item-position">
+  <ListItem >隐患详情</ListItem>
+  <ListItem [extra]="objectData.dangerName">隐患名称</ListItem>
+  <ListItem [extra]="objectData.dangerLevelName">隐患等级</ListItem>
+  <ListItem [extra]="objectData.factoryName">所属工厂</ListItem>
+  <ListItem [extra]="objectData.areaName">所属区域</ListItem>
+  <ListItem [extra]="objectData.planName" [wrap]="true">排查类型</ListItem>
+  <ListItem [extra]="objectData.checkHelperName" [wrap]="true">参与排查人</ListItem>
+  <ListItem [extra]="objectData.dangerFirstCategoryName">隐患一级分类</ListItem>
+  <ListItem [extra]="objectData.dangerSecondCategoryName">隐患二级分类</ListItem>
+  <ListItem [extra]="objectData.typeDesc">二级分类说明</ListItem>
+  <ListItem [extra]="objectData.dangerCauseReasonName" [wrap]="true">形成原因</ListItem>
+  <ListItem [extra]="objectData.dangerManageTypeName">治理类型</ListItem>
+  <ListItem [extra]="objectData.dangerControlMeasures" [wrap]="true">整改措施</ListItem>
+
+  <ng-container *ngIf="fileList.length > 0">
+    <div class="ml-interval"></div>
+    <ml-gray-bar [data]="'隐患图片'"></ml-gray-bar>
+    <ph-image [fileList]="fileList"></ph-image>
+  </ng-container>
+  <div class="ml-interval"></div>
+  <ListItem >隐患整改</ListItem>
+
+  <!-- <TextareaItem placeholder="隐患描述" [(ngModel)]="objectData.reviewContent" [clear]="true" [title]="'隐患描述'" 
+    [autoHeight]="true" [labelNumber]="2">
+  </TextareaItem> -->
+  <ListItem [extra]="objectData.dangerDesc" [wrap]="true">隐患描述</ListItem>
+  <TextareaItem placeholder="治理描述" [(ngModel)]="objectData.reviewContent" [clear]="true" [title]="'治理描述'" 
+  [autoHeight]="true" [labelNumber]="2">
+</TextareaItem>
+  <div class="ml-interval"></div>
+  <ml-gray-bar [data]="'附件信息'"></ml-gray-bar>
+  <ph-image #phImage [isEdit]="true" [fileList]="fileList1"></ph-image>
+  <ml-gray-bar></ml-gray-bar>
+</List>
+<div Button [type]="'primary'" style="margin: 10px;margin-left: 50px;margin-right: 50px;" class="button" debounceClick [debounceTime]="300"
+(debounceClick)="onSave()">提交
+</div>
+<div class="ml-interval"></div>

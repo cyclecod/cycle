@@ -85,7 +85,7 @@ export class CustomAbnormalComponent implements OnInit, OnChanges {
     // this.objectData.planId = this.objectData.planName;
     this.userData = this.storage.get('userMsg');
     // this.objectData.registrantId = this.userData.userName;
-    this.objectData.registrant = this.userData.userName;
+    this.objectData.registrant = this.userData.loginName;
     // this.objectData.dangerImg = this.checkService.getGuid();
     // this.objectData.liableDept = this.userData.departmentId;
     // this.objectData.liableDeptName = this.userData.department;
@@ -170,10 +170,10 @@ export class CustomAbnormalComponent implements OnInit, OnChanges {
   setObject() {
     const object = this.objectData;
     object.dangerCauseReason = this.getCheckValue('dangerCauseReason');
-    // object.liablePerson = 'PanDong';
-    // if (this.isNull(object.dangerManageDeadline)) {
-    //   object.dangerManageDeadline = moment(object.dangerManageDeadline).format('YYYY-MM-DD');
-    // }
+    object.liablePerson = 'PanDong';
+    if (this.isNull(object.dangerManageDeadline)) {
+      object.dangerManageDeadline = moment(object.dangerManageDeadline).format('YYYY-MM-DD');
+    }
     object.dangerState = '2'; //表示已提交
     return object;
   }

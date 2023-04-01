@@ -38,10 +38,13 @@ import { DiscoverDangerListComponent } from '../view/discover-danger-list/discov
 import { ExpireDangerListComponent } from '../view/expire-danger-list/expire-danger-list.page';
 import { TaskListComponent } from '../view/task-list/task-list.page';
 import { ExpireTaskListComponent } from '../view/expire-task-list/expire-task-list.page';
-import { DangerProcessComponent } from '../view/danger-process/danger-process.component'
-import { DangerAcceptComponent } from '../view/danger-accept/danger-accept.component'
-import {CustomTaskListComponent} from '../view/custom-task-list/custom-task-list.page'
-import {CustomAbnormalComponent} from '../view/custom-abnormal/custom-abnormal.page'
+import { DangerProcessComponent } from '../view/danger-process/danger-process.component';
+import { DangerAcceptComponent } from '../view/danger-accept/danger-accept.component';
+import {CustomTaskListComponent} from '../view/custom-task-list/custom-task-list.page';
+import {CustomAbnormalComponent} from '../view/custom-abnormal/custom-abnormal.page';
+import {CustomDetailComponent} from '../view/custom-detail/custom-detail.page';
+import {CustomDangerExpire} from '../view/custom-danger-expire/custom-danger-expire.page';
+import {CustomHandleComponent} from '../view/custom-handle/custom-handle.component'
 
 import {
   StringLengthPipe,
@@ -89,7 +92,11 @@ const components = [
     DangerProcessComponent,
     DangerAcceptComponent,
     CustomTaskListComponent,
-    CustomAbnormalComponent
+    CustomAbnormalComponent,
+    CustomDetailComponent,
+    CustomDangerExpire,
+    CustomHandleComponent
+    // ChooseDepartComponent
   ],
   imports: [CommonModule,
     TranslateModule,
@@ -106,6 +113,7 @@ const components = [
     ChooseDepartmentPage,
     ChooseDeviceComponent,
     ChooseUnitComponent,
+    // ChooseDepartComponent,
     ...components
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
